@@ -1,6 +1,6 @@
 ---
 title: "My Document"
-author: "Deden Istiawan-Institut Teknologi Statistika dan Bisnis Muhammadiyah"
+author: "Fazlur Rahman Hafidh-Institut Teknologi Statistika dan Bisnis Muhammadiyah"
 date: "`r Sys.Date()`"
 output: 
   html_document:
@@ -24,7 +24,7 @@ text-align: justify}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# R Markdown
+# GGPlot
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents [@deCarvalho2012]. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
@@ -33,9 +33,42 @@ When you click the **Knit** button a document will be generated that includes bo
 print('hello word')
 ```
 ```{r}
-library(readxl)
-iris <- read_excel("iris.xlsx")
-View(iris)
+library(ggplot2)
+
+data <- data.frame(x = rnorm(100),y = rnorm(100))
+
+ggplot(data,aes(x = x,y = y)) +
+  geom_step()
+```
+
+```{r}
+ggplot(data,aes(x = x,y = y)) +
+  geom_point() +
+  labs(title = "plot titik",x = "sumbu x",y = "sumbu y") +
+  theme_dark()
+```
+
+```{r}
+data <- data.frame(x = rnorm(100),y = rnorm(100),grup = sample(c("A","B"),100,replace = TRUE))
+
+ggplot(data,aes(x = x,y = y,colour = grup)) +
+  geom_point() +
+  facet_wrap(~ grup) +
+  scale_color_manual(values = c("A" = "blue", "B" = "red")) +
+  theme_dark()
+```
+
+```{r}
+library(readr)
+lizard <- read.csv("lizards.csv")
+View(lizard)
+```
+
+```{r}
+ggplot(lizard, aes(x = total_length,y = weight)) +
+  geom_point()
+  labs(title = "plot titik",x = "total_length",y = "weight") +
+    theme_dark()
 ```
 
 
