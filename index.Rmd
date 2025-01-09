@@ -1,4 +1,4 @@
----
+ ---
 title: "DATA VISUALIZATION DENGAN GGPLOT2"
 author: "Fazlur Rahman Hafidh-Institut Teknologi Statistika dan Bisnis Muhammadiyah"
 date: "`r Sys.Date()`"
@@ -98,15 +98,69 @@ Salah satu format data yang paling umum digunakan adalah CSV (Comma-Separated Va
 library(readr)
 lizard <- read.csv("lizards.csv")
 View(lizard)
+
 ```
 
 ```{r}
+library(ggplot2)
 ggplot(lizard, aes(x = total_length,y = weight)) +
   geom_point()
   labs(title = "plot titik",x = "total_length",y = "weight") +
-    theme_minimal()
+    theme_light
 ```
 
+
+```{r}
+library(ggplot2)
+ggplot(lizard, aes(x = total_length,y = weight)) +
+  geom_point()
+  labs(title = "plot titik",x = "total_length",y = "weight") +
+    theme_light()
+```
+
+```{r}
+library(ggplot2)
+ggplot(lizard, aes(x = total_length,y = common_name)) +
+  geom_jitter() +
+  labs (title="plot titik-titik lizard",x="total_length",y="common_name")
+```
+
+```{r}
+library(ggplot2)
+ggplot(lizard, aes(x = total_length)) +
+  geom_histogram() +
+  theme_linedraw()
+```
+
+```{r}
+library(ggplot2)
+ggplot(lizard, aes(y = common_name)) +
+  geom_bar()
+```
+
+```{r}
+library(ggplot2)
+ggplot(lizard, aes(x = weight)) +
+  geom_histogram(color = "blue",fill = "orange", size = 2, shape = 16,linetype = "dotted") +
+theme_linedraw()
+labs(title = "dinding lizards",x = "weight",y = "count")
+```
+
+```{r}
+library(ggplot2)
+ggplot(lizard, aes(x = total_length,y = weight)) +
+  geom_point(color = "orange",shape = "+",size = 4)
+  labs(title = "plot titik",x = "total_length",y = "weight") +
+    theme_light()
+```
+
+```{r}
+library(ggplot2)
+ggplot(lizard, aes(x = total_length,y = weight)) +
+  geom_point(aes(color = common_name,shape = "+",size = total_length)) +
+labs(title = "plot titik",x = "total length",y = "weight") +
+  theme_classic()
+```
 ## 2.2 Membaca Data dari File Excel
 Jika data Anda disimpan dalam format Excel, Anda dapat menggunakan paket readxl untuk membacanya. Fungsi read_excel() memungkinkan Anda untuk membaca file Excel dengan mudah.
 
