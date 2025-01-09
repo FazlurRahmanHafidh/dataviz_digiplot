@@ -105,8 +105,6 @@ View(lizard)
 library(ggplot2)
 ggplot(lizard, aes(x = total_length,y = weight)) +
   geom_point()
-  labs(title = "plot titik",x = "total_length",y = "weight") +
-    theme_light
 ```
 
 
