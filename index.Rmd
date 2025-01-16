@@ -1,16 +1,17 @@
+ ---
 ---
 title: "DATA VISUALIZATION DENGAN GGPLOT2"
 author: "Fazlur Rahman Hafidh-Institut Teknologi Statistika dan Bisnis Muhammadiyah"
 date: "`r Sys.Date()`"
 output: 
-  html_document:
-    css: style.css
-    theme: flatly
-    higlight: zenburn
-    toc: true
-    toc_float:
-      collapsed: true
-    df_print: paged
+html_document:
+css: style.css
+theme: flatly
+higlight: zenburn
+toc: true
+toc_float:
+collapsed: true
+df_print: paged
 bibliography: references.bib
 ---
 
@@ -52,7 +53,7 @@ library(ggplot2)
 data <- data.frame(x = rnorm(100),y = rnorm(100))
 
 ggplot(data,aes(x = x,y = y)) +
-  geom_point()
+ geom_point()
 ```
 
 ## 1.2 Menambahkan Elemen ke Grafik
@@ -68,9 +69,9 @@ Contoh menambahkan tema dan label:
 
 ```{r}
 ggplot(data,aes(x = x,y = y)) +
-  geom_point() +
-  labs(title = "plot titik",x = "sumbu x",y = "sumbu y") +
-  theme_dark()
+ geom_point() +
+ labs(title = "plot titik",x = "sumbu x",y = "sumbu y") +
+ theme_dark()
 ```
 
 ## 1.3 Menggunakan Facets
@@ -82,10 +83,10 @@ Contoh menggunakan faceting:
 data <- data.frame(x = rnorm(100),y = rnorm(100),grup = sample(c("A","B","C","D"),100,replace = TRUE))
 
 ggplot(data,aes(x = x,y = y,colour = grup)) +
-  geom_point() +
-  facet_wrap(~ grup) +
-  scale_color_manual(values = c("A" = "red", "B" = "orange","C" = "yellow", "D" = "green")) +
-  theme_dark()
+ geom_point() +
+ facet_wrap(~ grup) +
+ scale_color_manual(values = c("A" = "red", "B" = "orange","C" = "yellow", "D" = "green")) +
+ theme_dark()
 ```
 
 # Read Data
@@ -104,42 +105,42 @@ View(lizard)
 ```{r}
 library(ggplot2)
 ggplot(lizard, aes(x = total_length,y = weight)) +
-  geom_point()
+ geom_point()
 ```
 
 
 ```{r}
 library(ggplot2)
 ggplot(lizard, aes(x = total_length,y = weight)) +
-  geom_point()
-  labs(title = "plot titik",x = "total_length",y = "weight") +
-    theme_light()
+ geom_point()
+ labs(title = "plot titik",x = "total_length",y = "weight") +
+   theme_light()
 ```
 
 ```{r}
 library(ggplot2)
 ggplot(lizard, aes(x = total_length,y = common_name)) +
-  geom_jitter() +
-  labs (title="plot titik-titik lizard",x="total_length",y="common_name")
+ geom_jitter() +
+ labs (title="plot titik-titik lizard",x="total_length",y="common_name")
 ```
 
 ```{r}
 library(ggplot2)
 ggplot(lizard, aes(x = total_length)) +
-  geom_histogram() +
-  theme_linedraw()
+ geom_histogram() +
+ theme_linedraw()
 ```
 
 ```{r}
 library(ggplot2)
 ggplot(lizard, aes(y = common_name)) +
-  geom_bar()
+ geom_bar()
 ```
 
 ```{r}
 library(ggplot2)
 ggplot(lizard, aes(x = weight)) +
-  geom_histogram(color = "blue",fill = "orange", size = 2, shape = 16,linetype = "dotted") +
+ geom_histogram(color = "blue",fill = "orange", size = 2, shape = 16,linetype = "dotted") +
 theme_linedraw()
 labs(title = "dinding lizards",x = "weight",y = "count")
 ```
@@ -147,17 +148,17 @@ labs(title = "dinding lizards",x = "weight",y = "count")
 ```{r}
 library(ggplot2)
 ggplot(lizard, aes(x = total_length,y = weight)) +
-  geom_point(color = "orange",shape = "+",size = 4)
-  labs(title = "plot titik",x = "total_length",y = "weight") +
-    theme_light()
+ geom_point(color = "orange",shape = "+",size = 4)
+ labs(title = "plot titik",x = "total_length",y = "weight") +
+   theme_light()
 ```
 
 ```{r}
 library(ggplot2)
 ggplot(lizard, aes(x = total_length,y = weight)) +
-  geom_point(aes(color = common_name,shape = "+",size = total_length)) +
+ geom_point(aes(color = common_name,shape = "+",size = total_length)) +
 labs(title = "plot titik",x = "total length",y = "weight") +
-  theme_classic()
+ theme_classic()
 ```
 
 ```{r}
@@ -208,5 +209,3 @@ Anda juga dapat membaca data langsung dari URL, terutama jika data tersebut ters
 Membaca data adalah langkah awal yang sangat penting dalam proses analisis data, karena kualitas dan struktur data yang baik menjadi kunci untuk mendapatkan wawasan yang akurat. Dalam R, terdapat berbagai metode untuk membaca data dari berbagai sumber, termasuk file CSV, file Excel, database, dan URL. Penggunaan fungsi yang tepat, seperti read.csv(), read_csv(), read_excel(), dan koneksi database dengan DBI, memungkinkan pengguna untuk mengimpor data dengan mudah dan efisien.
 
 Setelah data berhasil dibaca, penting untuk memeriksa struktur dan tipe data menggunakan fungsi seperti head(), str(), dan summary(). Langkah ini memastikan bahwa data telah diimpor dengan benar dan siap untuk dianalisis lebih lanjut. Dengan pemahaman yang baik tentang cara membaca dan memeriksa data, pengguna dapat melanjutkan ke tahap analisis dan visualisasi menggunakan alat seperti ggplot2.
-
-Akhirnya, dengan memanfaatkan berbagai metode dan fungsi yang tersedia di R, pengguna dapat dengan mudah mengakses dan menganalisis data dari berbagai sumber, yang pada gilirannya akan membantu dalam pengambilan keputusan yang lebih baik dan lebih informatif.
