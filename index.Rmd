@@ -1,4 +1,4 @@
- ---
+---
 title: "DATA VISUALIZATION DENGAN GGPLOT2"
 author: "Fazlur Rahman Hafidh-Institut Teknologi Statistika dan Bisnis Muhammadiyah"
 date: "`r Sys.Date()`"
@@ -158,6 +158,42 @@ ggplot(lizard, aes(x = total_length,y = weight)) +
   geom_point(aes(color = common_name,shape = "+",size = total_length)) +
 labs(title = "plot titik",x = "total length",y = "weight") +
   theme_classic()
+```
+
+```{r}
+library(gapminder)
+library(ggplot2)
+library(gganimate)
+
+data=gapminder
+data
+```
+
+```{r}
+ggplot(data,aes(y=lifeExp,x=gdpPercap)) + 
+  geom_point(shape=6) + 
+  labs(title="gapminder",x="GDP",y="life experiency") 
+```
+
+```{r}
+ggplot(data,aes(y=lifeExp,x=gdpPercap)) + 
+  geom_point(alpha=0.6) + 
+  scale_x_log10() + 
+  labs(title="gapminder",x="GDP",y="life experiency")
+```
+
+```{r}
+gipminder_plot <- ggplot(data,aes(y=lifeExp,x=gdpPercap)) + 
+  geom_point(aes(alpha=0.6,color = continent,size = pop)) + 
+  scale_color_viridis_d(option = "magma") +
+  scale_x_log10() + 
+  labs(title="gapminder",x="GDP",y="life experiency")
+gipminder_plot
+```
+
+```{r}
+library(gganimate)
+gapminder_plot+transition_time(year)+labs(title =    )
 ```
 ## 2.2 Membaca Data dari File Excel
 Jika data Anda disimpan dalam format Excel, Anda dapat menggunakan paket readxl untuk membacanya. Fungsi read_excel() memungkinkan Anda untuk membaca file Excel dengan mudah.
